@@ -32,7 +32,7 @@ def some_job():
     print(f"day {count}")
     count += 1
 
-# the scheduler
-scheduler = BlockingScheduler()
-scheduler.add_job(some_job, 'interval', hour=24, minute=10)
-scheduler.start()
+schedule.every(12).hours.do(some_job)
+
+while True: 
+  schedule.run_pending()
